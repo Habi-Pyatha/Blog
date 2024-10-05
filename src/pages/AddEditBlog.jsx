@@ -12,7 +12,7 @@ const initialState={
     category:"",
     imageUrl:""
 }
-const options=["Travel","Fashain","Fitness","Sports","Food","Tech"]
+const options=["Travel","Fashion","Fitness","Sports","Food","Tech"]
 
 
 

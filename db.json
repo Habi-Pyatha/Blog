@@ -8,6 +8,22 @@
       "imageURL": "",
       "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728125898/nqc1wmbqy46gmso1rdhd.jpg",
       "date": "10/05/2024"
+    },
+    {
+      "id": "c523",
+      "title": "Fashion",
+      "description": "Adventure",
+      "category": "Fashain",
+      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728129077/khizigybhumkstyfy20r.jpg",
+      "date": "10/05/2024"
+    },
+    {
+      "id": "3393",
+      "title": "just for the show",
+      "description": "helllow is this lllllllllllllllllllllllllllllllllllllllllllllllllllllllldkfkkkkkkkkkkkkkkkk",
+      "category": "Fashion",
+      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728130285/ljbzjou75isja1hefj79.jpg",
+      "date": "10/05/2024"
     }
   ]
 }
