@@ -56,17 +56,28 @@ const AddEditBlog = () => {
         if(!category){
             setCategoryErrMsg("Please select a category");
         }
+        const imageValidation=!editMode?imageUrl:true;
         if(title && description && imageUrl &&category){
             const currentDate=getDate();
-            const updatedBlogData={...formValue,date:currentDate};
-            const response=await axios.post("http://localhost:5000/blogs",updatedBlogData)
-            if(response.status===201){
-                toast.success("Blog Created Successfully")
-                
+            if(!editMode){
+                const updatedBlogData={...formValue,date:currentDate};
+                const response=await axios.post("http://localhost:5000/blogs",updatedBlogData)
+                if(response.status===201){
+                    toast.success("Blog Created Successfully")   
+                }
+                else{
+                    toast.error("Something went wrong")
+                }
+            }else{
+                const response=await axios.put(`http://localhost:5000/blogs/${id}`,formValue)
+                if(response.status===200){
+                    toast.success("Blog Updated Successfully")   
+                }
+                else{
+                    toast.error("Something went wrong")
+                }
             }
-            else{
-                toast.error("Something went wrong")
-            }
+            
             setFormValue({title:"",description:"",category:"",imageUrl:""});
             navigate("/");
         }
@@ -129,9 +140,13 @@ const AddEditBlog = () => {
     validation="Please provide a description"
 />
 <br />
-
-                    <MDBInput   type="file" onChange={(e)=>onUploadImage(e.target.files[0])} required  /><br />
-                    <select className="categoryDropDown" onChange={onCategoryChange} value={category}>
+                {!editMode &&(
+                    <>
+                        <MDBInput   type="file" onChange={(e)=>onUploadImage(e.target.files[0])} required  /><br />
+                    
+                    </>
+                )}
+                 <select className="categoryDropDown" onChange={onCategoryChange} value={category}>
                         <option value="">Please Select Category</option>
                         {options.map((option,index)=>(
                             <option value={option||""} key={index}>{option}</option>
@@ -140,7 +155,7 @@ const AddEditBlog = () => {
                     {categoryErrMsg && (
                         <div className="categoryErrorMsg ">{categoryErrMsg}</div>
                     )}
-                <br/>
+                <br/>   
                 <br/>
                 <MDBBtn type='submit'style={{marginRight:"20px"}}>{editMode?"Update":"Add"}</MDBBtn>
                 <MDBBtn color="danger" style={{marginRight:"10px"}} onClick={()=>navigate("/")}>Go Back</MDBBtn>

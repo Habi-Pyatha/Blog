@@ -21,7 +21,7 @@ const Home = () => {
           toast.error("Something went wrong");
         }
     }
-    console.log("data",data);
+    // console.log("data",data);
 const handleDelete=async(id)=>{
     if(window.confirm("Are you sure you wanted to delete that blog?")){
         const response=await axios.delete(`http://localhost:5000/blogs/${id}`);
@@ -50,7 +50,7 @@ const excerpt =(str)=>{
                     No Blog Found
                 </MDBTypography>
             )}
-            <MDBCol>
+            <MDBCol >
                 <MDBContainer> 
                     <MDBRow>
                         {data&& data.map((item,index)=>(

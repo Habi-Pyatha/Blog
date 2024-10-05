@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
@@ -23,4 +24,7 @@ code {
   color:red;
   text-align: left;
   font-size: 14px;
+}
+.blog-card {
+  margin-bottom: 20px; /* Adjust the value as needed */
 }

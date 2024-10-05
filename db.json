@@ -2,23 +2,6 @@
   "blogs": [
     {
       "id": "2eec",
-      "title": "test",
-      "description": "kfsd;llfkds;f;ksd",
-      "category": "Fitness",
-      "imageURL": "",
-      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728125898/nqc1wmbqy46gmso1rdhd.jpg",
-      "date": "10/05/2024"
-    },
-    {
-      "id": "bd45",
-      "title": "Sport",
-      "description": "Good for health",
-      "category": "Sports",
-      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728135616/gkbl5taqmruoxf5bcxja.jpg",
-      "date": "10/05/2024"
-    },
-    {
-      "id": "2eec",
       "title": "Spider Man",
       "description": "Just and amazing movie it was",
       "category": "Sports",
@@ -27,11 +10,11 @@
       "date": "10/05/2024"
     },
     {
-      "id": "bd45",
-      "title": "Sport",
-      "description": "Good for health",
-      "category": "Travel",
-      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728135616/gkbl5taqmruoxf5bcxja.jpg",
+      "id": "b8dc",
+      "title": "fun",
+      "description": "tlsdjfsdhfksdkfjsdjksdjflsdkjflkjflsdkjfjlsdkjlfsdjlfjdsljfsdkjfksdjklflsdkfsdjkfjlsdkfjsdljfjsdjflsdljflsdjfjdsljflksjdlfjlasdkfjklsdjfdsskdlllldkjkfaskldfjkldsjkasdlkfsjdafjasdfjkasjdkfsdkjfkjasdjfkdsklfksdjfjsdjkfsdkfksdjklfjsdlkjfljdsf",
+      "category": "Food",
+      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728140607/vk32xeplysydmaheqsd9.jpg",
       "date": "10/05/2024"
     }
   ]

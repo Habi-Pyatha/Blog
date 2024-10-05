@@ -5,8 +5,8 @@ import Badge from './Badge'
 
 const Blogs = ({ title, category, description, id, imageUrl, excerpt, handleDelete }) => {
   return (
-    <MDBCol size="4"> {/* Removed the enclosing div */}
-        <MDBCard className='h-100 mt-2' style={{ maxWidth: "22rem" }}>
+    <MDBCol size="4" style={{marginBottom:"20px" }}> {/* Removed the enclosing div */}
+        <MDBCard className='h-100 mt-2' style={{ maxWidth: "22rem"}}>
             <MDBCardImage
                 src={imageUrl}
                 alt={title}
