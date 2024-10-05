@@ -1,3 +1,13 @@
 {
-    "blogs":[]
+  "blogs": [
+    {
+      "id": "2eec",
+      "title": "test",
+      "description": "kfsd;llfkds;f;ksd",
+      "category": "Fitness",
+      "imageURL": "",
+      "imageUrl": "http://res.cloudinary.com/dspmptuln/image/upload/v1728125898/nqc1wmbqy46gmso1rdhd.jpg",
+      "date": "10/05/2024"
+    }
+  ]
 }
