@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {MDBValidation,MDBInput,MDBBtn} from "mdb-react-ui-kit"
 import axios from "axios"
 import { toast } from 'react-toastify'
 // import '../components/style/addEditBlog.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 // process.env.REACT_APP_UPLOAD_PRESET
 const initialState={
@@ -20,7 +20,28 @@ const AddEditBlog = () => {
     const[formValue,setFormValue]=useState(initialState);
     const[categoryErrMsg,setCategoryErrMsg]=useState(null);
     const{title,description,category,imageUrl}=formValue;
+    const[editMode,setEditMode]=useState(false);
     const navigate=useNavigate();
+    const {id}=useParams();
+
+    useEffect(()=>{
+        if(id){
+            setEditMode(true);
+            getSingleBlog(id);
+        }
+        else{
+            setEditMode(false);
+            setFormValue({...initialState});
+        }
+    },[id])
+    const getSingleBlog=async(id)=>{
+        const singleBlog=await axios.get(`http://localhost:5000/blogs/${id}`)
+        if(singleBlog.status===200){
+        setFormValue({...singleBlog.data})
+        }else{
+            toast.error("Something went wrong");
+        }
+    }
     const getDate=()=>{
         let today=new Date();
         let dd=String(today.getDate()).padStart(2,"0")
@@ -39,7 +60,7 @@ const AddEditBlog = () => {
             const currentDate=getDate();
             const updatedBlogData={...formValue,date:currentDate};
             const response=await axios.post("http://localhost:5000/blogs",updatedBlogData)
-            if(response.status==201){
+            if(response.status===201){
                 toast.success("Blog Created Successfully")
                 
             }
@@ -83,13 +104,14 @@ const AddEditBlog = () => {
   return (
     <>
         <MDBValidation className='row g-3' style={{marginTop:"100px"}} noValidate onSubmit={handleSubmit}>
-                <p className='fs-2 fw-bold'>Add Blog</p>
-                <div className='form-one'
+                <p className='fs-2 fw-bold'>{editMode? "Update Blog":"Add Blog"}</p>
+                <div 
                     style={{
                         margin: "auto",
                         padding: "15px",
                         maxWidth: "400px",
                         alignContent: "center",
+                        
                     }}
                 >
                     <MDBInput value={title || ""} name="title" type="text" onChange={onInputChange} required label="Title" validation="please provide a title"/><br />
@@ -97,9 +119,11 @@ const AddEditBlog = () => {
                     <MDBInput 
     value={description || ""} 
     name="description" 
-    type="textarea" // Change type to 'textarea'
+    type="textarea"
+     // Change type to 'textarea'
     onChange={onInputChange} 
     required 
+    
     label="Description" 
     rows={4} // Specify number of rows
     validation="Please provide a description"
@@ -118,7 +142,7 @@ const AddEditBlog = () => {
                     )}
                 <br/>
                 <br/>
-                <MDBBtn type='submit'style={{marginRight:"20px"}}>Add</MDBBtn>
+                <MDBBtn type='submit'style={{marginRight:"20px"}}>{editMode?"Update":"Add"}</MDBBtn>
                 <MDBBtn color="danger" style={{marginRight:"10px"}} onClick={()=>navigate("/")}>Go Back</MDBBtn>
                 </div>
 

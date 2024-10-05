@@ -22,7 +22,19 @@ const Home = () => {
         }
     }
     console.log("data",data);
-const handleDelete=()=>{}
+const handleDelete=async(id)=>{
+    if(window.confirm("Are you sure you wanted to delete that blog?")){
+        const response=await axios.delete(`http://localhost:5000/blogs/${id}`);
+        if(response.status===200){
+          toast.success("Blog Deleted Sucessfully");
+          loadBlogsData();
+        }
+        else{
+          toast.error("Something went wrong");
+        }
+    }
+
+}
 const excerpt =(str)=>{
     if(str.length>50){
         str=str.substring(0,50 )+"..."
