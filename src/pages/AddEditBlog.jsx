@@ -10,7 +10,7 @@ const initialState={
     title:"",
     description:"",
     category:"",
-    imageURL:""
+    imageUrl:""
 }
 const options=["Travel","Fashain","Fitness","Sports","Food","Tech"]
 
@@ -21,7 +21,7 @@ const AddEditBlog = () => {
     const[categoryErrMsg,setCategoryErrMsg]=useState(null);
     const{title,description,category,imageUrl}=formValue;
     const navigate=useNavigate();
-    const Date=()=>{
+    const getDate=()=>{
         let today=new Date();
         let dd=String(today.getDate()).padStart(2,"0")
         let mm=String(today.getMonth()+1).padStart(2,"0")
@@ -30,13 +30,24 @@ const AddEditBlog = () => {
         today=mm+'/'+dd+"/"+yyyy;
         return today;
     }
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         if(!category){
             setCategoryErrMsg("Please select a category");
         }
         if(title && description && imageUrl &&category){
             const currentDate=getDate();
+            const updatedBlogData={...formValue,date:currentDate};
+            const response=await axios.post("http://localhost:5000/blogs",updatedBlogData)
+            if(response.status==201){
+                toast.success("Blog Created Successfully")
+                
+            }
+            else{
+                toast.error("Something went wrong")
+            }
+            setFormValue({title:"",description:"",category:"",imageUrl:""});
+            navigate("/");
         }
     }
     const onInputChange=(e)=>{
