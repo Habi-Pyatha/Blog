@@ -28,3 +28,36 @@ code {
 .blog-card {
   margin-bottom: 20px; /* Adjust the value as needed */
 }
+h1{
+  overflow: hidden;
+  text-align: center;
+}
+h1:before,
+h1:after{
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position:relative;
+  vertical-align: middle;
+  width: 50%;
+}
+h1:before{
+  right: 0.5em;
+  margin-left: -50%;
+}
+h1:after{
+  left:0.5em;
+  margin-right: -50%;
+}
+.searchForm{
+  margin:auto;
+  padding:15px;
+  max-width:550px;
+  align-items: center;
+}
+.latest-title{
+  color: black;
+  font-weight: 600;
+  font-family: monospace;
+}
