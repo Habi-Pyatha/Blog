@@ -73,7 +73,7 @@ const excerpt =(str)=>{
         <>
         {relatedPost.length>1 && <h1>Related Post</h1>}
         <MDBRow className='row-cols-1 row-cols-md-3 g-4'>
-          {relatedPost.filter((item)=>item.id!=id).map((item,index)=>(
+          {relatedPost.filter((item)=>item.id!==id).map((item,index)=>(
               <MDBCol key={item.id}>
                 <MDBCard>
                   <Link to={`/blog/${item.id}`}>
